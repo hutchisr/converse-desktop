@@ -33,6 +33,7 @@
   "dependencies": {
     "converse.js": "^10.0.0",
     "electron-settings": "^4.0.2",
+    "jshint": "^2.13.6",
     "keytar": "^7.9.0"
   },
   "build": {
