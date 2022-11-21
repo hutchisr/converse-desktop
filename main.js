@@ -72,6 +72,10 @@ function createWindow () {
             app.isQuitting = true
             app.quit()
         })
+        // Ensure application quits when quit option is chosen from dock
+        app.on('before-quit', () => {
+            app.isQuitting = true;
+        })
     }
 
     // Handle restart
