@@ -41,4 +41,8 @@ trayService.hideEnvelope = () => {
     tray.setImage(iconPath)
 }
 
+trayService.destroy = () => {
+    tray.destroy()
+}
+
 module.exports = trayService
