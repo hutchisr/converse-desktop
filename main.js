@@ -44,10 +44,12 @@ function createWindow () {
     mainWindow = new BrowserWindow(mainWindowOptions)
 
     // Init tray
-    trayService.initTray(mainWindow)
+    if (!settingsService.get('hideTrayIcon')) {
+        trayService.initTray(mainWindow)
+    }
 
     // Init menu
-    menuService.createMenu(mainWindow)
+    menuService.createMenu(mainWindow, trayService)
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()

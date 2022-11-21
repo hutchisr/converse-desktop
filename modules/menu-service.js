@@ -7,7 +7,7 @@ const settingsService = require(__dirname + '/../modules/settings-service')
 const menuService = {}
 
 
-menuService.createMenu = (window) => {
+menuService.createMenu = (window, trayService) => {
     let converse;
     const application = new Menu();
     application.append(new MenuItem({
@@ -46,6 +46,21 @@ menuService.createMenu = (window) => {
                     const menuItem = converse.getMenuItemById('hide-menubar');
                     settingsService.set('hideMenubar', menuItem.checked);
                     window.setAutoHideMenuBar(menuItem.checked);
+                }
+            },
+            {
+                label: 'Hide Tray Icon',
+                type: 'checkbox',
+                id: 'hide-tray-icon',
+                checked: settingsService.get('hideTrayIcon'),
+                click: () => {
+                    const menuItem = converse.getMenuItemById('hide-tray-icon');
+                    settingsService.set('hideTrayIcon', menuItem.checked);
+                    if (menuItem.checked) {
+                        trayService.destroy()
+                    } else {
+                        trayService.initTray(window)
+                    }
                 }
             },
             {
