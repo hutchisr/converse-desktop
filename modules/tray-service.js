@@ -33,16 +33,16 @@ trayService.initTray = (window) => {
 
 trayService.showEnvelope = () => {
     const iconPath = getTrayServiceIcon('envelope')
-    tray.setImage(iconPath)
+    tray && tray.setImage(iconPath)
 }
 
 trayService.hideEnvelope = () => {
     const iconPath = getTrayServiceIcon()
-    tray.setImage(iconPath)
+    tray && tray.setImage(iconPath)
 }
 
 trayService.destroy = () => {
-    tray.destroy()
+    tray && tray.destroy()
 }
 
 module.exports = trayService
